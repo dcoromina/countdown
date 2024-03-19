@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  List<int> cardList = List<int>.generate(20, (int index) => index);
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -104,17 +105,29 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           children: <Widget>[
             SizedBox(
-              height: 700,
-              child: ListView(padding: EdgeInsets.all(5), children: [
-                TestCard(),
-                TestCard(),
-                TestCard(),
-                TestCard(),
-                TestCard(),
-                TestCard(),
-                TestCard()
-              ]),
-            )
+                height: 700,
+                child: ListView.builder(
+                  itemCount: cardList.length,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Dismissible(
+                      background: Container(
+                        color: Colors.green,
+                      ),
+                      key: ValueKey<int>(cardList[index]),
+                      onDismissed: (DismissDirection direction) {
+                        setState(() {
+                          cardList.removeAt(index);
+                        });
+                      },
+                      child: ListTile(
+                        title: Text(
+                          'Item ${cardList[index]}',
+                        ),
+                      ),
+                    );
+                  },
+                ))
           ],
         ),
       ),

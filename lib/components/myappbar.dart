@@ -7,16 +7,28 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
         child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        TextButton(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: null,
+                child: Text("Active",
+                    style: TextStyle(color: Colors.white, fontSize: 17))),
+            TextButton(
+                onPressed: null,
+                child: Text("Past",
+                    style: TextStyle(color: Colors.white, fontSize: 17))),
+          ],
+        ),
+        SizedBox(width: 95),
+        IconButton(
             onPressed: null,
-            child: Text("Active",
-                style: TextStyle(color: Colors.white, fontSize: 17))),
-        TextButton(
-            onPressed: null,
-            child: Text("Past",
-                style: TextStyle(color: Colors.white, fontSize: 17))),
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ))
       ],
     ));
   }

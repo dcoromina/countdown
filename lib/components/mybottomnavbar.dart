@@ -1,3 +1,4 @@
+import 'package:countdown/main.dart';
 import 'package:flutter/material.dart';
 
 class MyBottomNavBar extends StatelessWidget {
@@ -9,23 +10,23 @@ class MyBottomNavBar extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         TextButton(
           onPressed: null,
-          child: Text(
-            "Countdowns",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17,
-            ),
-          ),
-        ),
-        TextButton(
+          child: TextButton(
             onPressed: null,
             child: Text(
-              "Streaks",
+              "Countdowns",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
               ),
-            ))
+            ),
+          ),
+        ),
+        ElevatedButton(
+            child: Text(
+              "Streaks",
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: null)
       ]),
     );
   }
