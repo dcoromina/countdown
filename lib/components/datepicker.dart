@@ -26,11 +26,9 @@ class _MyDatePickerState extends State<MyDatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 100,
-      child: Center(
-        child: Column(
+    return Wrap(
+      children: [
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Event's date"),
@@ -64,8 +62,8 @@ class _MyDatePickerState extends State<MyDatePicker> {
               ],
             ),
           ],
-        ),
-      ),
+        )
+      ],
     );
     ;
   }

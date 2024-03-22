@@ -1,6 +1,7 @@
 import 'package:countdown/components/myappbar.dart';
 import 'package:countdown/components/mybottomnavbar.dart';
 import 'package:countdown/components/test_card.dart';
+import 'package:countdown/pages/card_detail.dart';
 import 'package:countdown/pages/create_countdown.dart';
 import 'package:countdown/styles.dart';
 import 'package:flutter/material.dart';
@@ -133,8 +134,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          /* Navigator.push(context,
-              MaterialPageRoute(builder: (context) => CreateCountdown())); */
+          /*  Navigator.push(
+              context, MaterialPageRoute(builder: (context) => CardDetail())); */
           showDialog(
             context: context,
             builder: (context) {
