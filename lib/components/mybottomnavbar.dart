@@ -1,4 +1,6 @@
 import 'package:countdown/main.dart';
+import 'package:countdown/pages/card_detail.dart';
+import 'package:countdown/pages/streak_page.dart';
 import 'package:flutter/material.dart';
 
 class MyBottomNavBar extends StatelessWidget {
@@ -6,9 +8,9 @@ class MyBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        TextButton(
+        const TextButton(
           onPressed: null,
           child: TextButton(
             onPressed: null,
@@ -26,7 +28,12 @@ class MyBottomNavBar extends StatelessWidget {
               "Streaks",
               style: TextStyle(color: Colors.white),
             ),
-            onPressed: null)
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyStreaks()),
+              );
+            })
       ]),
     );
   }

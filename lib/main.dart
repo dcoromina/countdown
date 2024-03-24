@@ -1,8 +1,11 @@
 import 'package:countdown/components/myappbar.dart';
 import 'package:countdown/components/mybottomnavbar.dart';
 import 'package:countdown/components/test_card.dart';
+import 'package:countdown/components/testcountdown.dart';
 import 'package:countdown/pages/card_detail.dart';
+import 'package:countdown/pages/countdown_page.dart';
 import 'package:countdown/pages/create_countdown.dart';
+import 'package:countdown/pages/streak_page.dart';
 import 'package:countdown/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +13,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -61,21 +69,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   List<int> cardList = List<int>.generate(20, (int index) => index);
-  @override
+  bool _showStreaks = false;
+
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -89,48 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          children: <Widget>[
-            SizedBox(
-                height: 700,
-                child: ListView.builder(
-                  itemCount: cardList.length,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Dismissible(
-                      background: Container(
-                        color: Colors.green,
-                      ),
-                      key: ValueKey<int>(cardList[index]),
-                      onDismissed: (DismissDirection direction) {
-                        setState(() {
-                          cardList.removeAt(index);
-                        });
-                      },
-                      child: ListTile(
-                        title: Text(
-                          'Item ${cardList[index]}',
-                        ),
-                      ),
-                    );
-                  },
-                ))
-          ],
-        ),
+        child: _showStreaks ? _buildTextField() : _buildButton(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -154,6 +109,28 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar:
           const MyBottomNavBar(), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget _buildTextField() {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          _showStreaks = false; // Switch to showing the TextField.
+        });
+      },
+      child: MyCountdowns(),
+    );
+  }
+
+  Widget _buildButton() {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          _showStreaks = true; // Switch to showing the TextField.
+        });
+      },
+      child: MyStreaks(),
     );
   }
 }

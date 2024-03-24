@@ -1,3 +1,4 @@
+import 'package:countdown/pages/card_detail.dart';
 import 'package:flutter/material.dart';
 
 class TestCard extends StatelessWidget {
@@ -11,38 +12,45 @@ class TestCard extends StatelessWidget {
 
         return Dismissible(
           behavior: HitTestBehavior.translucent,
-          confirmDismiss: (direction) {
-            return Future(() => showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: const Text('Are you sure?'),
-                      content: const Text(
-                        'Are you sure you want to delete this countdown? Theres no going back after this.',
-                      ),
-                      actions: <Widget>[
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          child: const Text('Disable'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
+          confirmDismiss: (direction) async {
+            if (direction != DismissDirection.startToEnd) {
+              /* -------------- Delete card on swipe -----------*/
+              return Future(() => showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Are you sure?'),
+                        content: const Text(
+                          'Are you sure you want to delete this countdown? Theres no going back after this.',
                         ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: Theme.of(context).textTheme.labelLarge,
+                        actions: <Widget>[
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                            ),
+                            child: const Text('Cancel'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                           ),
-                          child: const Text('Enable'),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                ));
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: Theme.of(context).textTheme.labelLarge,
+                            ),
+                            child: const Text('Delete'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  ));
+            } else {
+              /* ----------- Edit card on swipe -------*/
+              return Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const CardDetail()));
+            }
           },
           secondaryBackground: Container(
             decoration: BoxDecoration(
