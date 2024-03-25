@@ -69,8 +69,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _currentIndex = 0;
+  final List<Widget> _pages = [
+    const MyCountdowns(), // Replace with your actual widgets
+    const MyStreaks(),
+  ];
   List<int> cardList = List<int>.generate(20, (int index) => index);
-  bool _showStreaks = false;
 
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -82,10 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: const MyAppBar(),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: _showStreaks ? _buildTextField() : _buildButton(),
+      body: SafeArea(
+        child: Center(
+          child: IndexedStack(
+            index: _currentIndex,
+            children: _pages,
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -107,30 +114,44 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Create countdown',
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar:
-          const MyBottomNavBar(), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-
-  Widget _buildTextField() {
-    return ElevatedButton(
-      onPressed: () {
-        setState(() {
-          _showStreaks = false; // Switch to showing the TextField.
-        });
-      },
-      child: MyCountdowns(),
-    );
-  }
-
-  Widget _buildButton() {
-    return ElevatedButton(
-      onPressed: () {
-        setState(() {
-          _showStreaks = true; // Switch to showing the TextField.
-        });
-      },
-      child: MyStreaks(),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        selectedItemColor: Colors.white,
+        selectedLabelStyle: const TextStyle(
+            fontSize: 17,
+            color: Colors.white,
+            fontWeight: FontWeight.normal,
+            shadows: <Shadow>[
+              Shadow(
+                offset: Offset(2.0, 2.0),
+                blurRadius: 10.0,
+                color: Color.fromARGB(157, 0, 0, 0),
+              )
+            ]),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.normal,
+        ),
+        selectedIconTheme: const IconThemeData(opacity: 0.0, size: 0),
+        unselectedIconTheme: const IconThemeData(opacity: 0.0, size: 0),
+        backgroundColor: Colors.transparent,
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Countdowns',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Streaks',
+          ),
+        ],
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

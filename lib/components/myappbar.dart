@@ -1,3 +1,4 @@
+import 'package:countdown/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -24,11 +25,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         SizedBox(width: 95),
         IconButton(
-            onPressed: null,
-            icon: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ))
+          icon: Icon(
+            Icons.settings,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => CardDetail()));
+          },
+        )
       ],
     ));
   }
