@@ -1,3 +1,4 @@
+import 'package:countdown/styles.dart';
 import 'package:flutter/material.dart';
 
 class MySettings extends StatefulWidget {
@@ -10,15 +11,8 @@ class MySettings extends StatefulWidget {
 class _MySettingsState extends State<MySettings> {
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Text("data"),
-        Text("data"),
-        Text("data"),
-        Text("data"),
-        Text("data"),
-        Text("data"),
-      ],
+    return const Scaffold(
+      backgroundColor: AppColors.backgroundColor,
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:countdown/components/streak_card.dart';
 import 'package:countdown/components/test_card.dart';
 import 'package:countdown/styles.dart';
 import 'package:flutter/material.dart';
@@ -7,14 +8,6 @@ class MyStreaks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.backgroundColor,
-      child: const SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Patata")],
-        ),
-      ),
-    );
+    return const StreaksCard();
   }
 }

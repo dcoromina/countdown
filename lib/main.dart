@@ -1,7 +1,7 @@
 import 'package:countdown/components/myappbar.dart';
 import 'package:countdown/components/mybottomnavbar.dart';
 import 'package:countdown/components/test_card.dart';
-import 'package:countdown/components/testcountdown.dart';
+import 'package:countdown/components/timer.dart';
 import 'package:countdown/pages/card_detail.dart';
 import 'package:countdown/pages/countdown_page.dart';
 import 'package:countdown/pages/create_countdown.dart';
@@ -71,7 +71,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    const MyCountdowns(), // Replace with your actual widgets
+    CountdownTimerScreen(
+      targetDate: DateTime(2024, 12, 31),
+    ), // Replace with your actual widgets
     const MyStreaks(),
   ];
   List<int> cardList = List<int>.generate(20, (int index) => index);

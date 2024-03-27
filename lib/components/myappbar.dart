@@ -6,7 +6,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
@@ -25,13 +25,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         SizedBox(width: 95),
         IconButton(
-          icon: Icon(
-            Icons.settings,
-            color: Colors.white,
-          ),
+          icon: Icon(Icons.settings),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => CardDetail()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MySettings()));
           },
         )
       ],

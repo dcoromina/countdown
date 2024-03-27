@@ -1,8 +1,10 @@
 import 'package:countdown/pages/card_detail.dart';
 import 'package:flutter/material.dart';
 
-class TestCard extends StatelessWidget {
-  const TestCard({super.key});
+class CountdownCard extends StatelessWidget {
+  final String potato; // Specify your target date here
+
+  CountdownCard({super.key, required this.potato});
 
   @override
   Widget build(BuildContext context) {
