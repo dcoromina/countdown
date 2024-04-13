@@ -4,6 +4,7 @@ import 'package:countdown/components/test_card.dart';
 import 'package:countdown/components/timer.dart';
 import 'package:countdown/pages/card_detail.dart';
 import 'package:countdown/pages/countdown_page.dart';
+import 'package:countdown/pages/counter_page.dart';
 import 'package:countdown/pages/create_countdown.dart';
 import 'package:countdown/pages/streak_page.dart';
 import 'package:countdown/styles.dart';
@@ -75,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       targetDate: DateTime(2024, 12, 31),
     ), // Replace with your actual widgets
     const MyStreaks(),
+    const MyCounters()
   ];
   List<int> cardList = List<int>.generate(20, (int index) => index);
 
@@ -134,8 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
           fontSize: 17,
           fontWeight: FontWeight.normal,
         ),
-        selectedIconTheme: const IconThemeData(opacity: 0.0, size: 0),
-        unselectedIconTheme: const IconThemeData(opacity: 0.0, size: 0),
+        selectedIconTheme: const IconThemeData(opacity: 1.0, size: 25),
+        unselectedIconTheme: const IconThemeData(opacity: 1.0, size: 25),
+        showUnselectedLabels: false,
         backgroundColor: Colors.transparent,
         currentIndex: _currentIndex,
         onTap: (index) {
@@ -145,12 +148,16 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.punch_clock),
             label: 'Countdowns',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.upload),
             label: 'Streaks',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.plus_one),
+            label: 'Counter',
           ),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.

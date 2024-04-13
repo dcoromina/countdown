@@ -42,6 +42,9 @@ class _CountdownTimerScreenState extends State<CountdownTimerScreen> {
     final hours = duration.inHours % 24;
     final minutes = duration.inMinutes % 60;
     final seconds = duration.inSeconds % 60;
+
+    ;
+
     return ' $years years, $months months, $days days, $hours hours, $minutes minutes, $seconds seconds';
   }
 
@@ -54,7 +57,6 @@ class _CountdownTimerScreenState extends State<CountdownTimerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Countdown Timer')),
       body: Center(
         child: Text(
           _formatTime(_remainingTime),

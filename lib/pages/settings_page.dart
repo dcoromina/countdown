@@ -9,10 +9,183 @@ class MySettings extends StatefulWidget {
 }
 
 class _MySettingsState extends State<MySettings> {
+  var _switchValue = false;
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        title: const Text("Settings"),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: AppColors.accentColor,
+                    borderRadius: BorderRadius.circular(11)),
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: MediaQuery.of(context).size.height / 12,
+                child: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.language),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Language"),
+                        ],
+                      ),
+                      Text("English")
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: AppColors.accentColor,
+                    borderRadius: BorderRadius.circular(11)),
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: MediaQuery.of(context).size.height / 12,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Row(
+                        children: [
+                          Icon(Icons.dark_mode),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Dark Mode"),
+                        ],
+                      ),
+                      Switch(
+                        // thumb color (round icon)
+                        activeColor: Colors.amber,
+                        activeTrackColor: Colors.cyan,
+                        inactiveThumbColor: Colors.blueGrey,
+                        inactiveTrackColor: Colors.grey,
+                        splashRadius: 50.0,
+                        // boolean variable value
+                        value: _switchValue,
+                        // changes the state of the switch
+                        onChanged: (bool value) =>
+                            setState(() => _switchValue = value),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Divider(
+                endIndent: 100,
+                indent: 100,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: AppColors.accentColor,
+                    borderRadius: BorderRadius.circular(11)),
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: MediaQuery.of(context).size.height / 12,
+                child: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.thumb_up_alt_outlined),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("Rate the app"),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: AppColors.accentColor,
+                    borderRadius: BorderRadius.circular(11)),
+                width: MediaQuery.of(context).size.width / 1.1,
+                height: MediaQuery.of(context).size.height / 12,
+                child: const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.highlight_remove_rounded),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("Remove ads"),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Divider(
+                endIndent: 100,
+                indent: 100,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Center(
+                child: Text("About"),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Center(
+                child: Text("Privacy policy"),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Center(
+                child: Text("Terms of service"),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Center(
+                child: Text("Change privacy preferences"),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

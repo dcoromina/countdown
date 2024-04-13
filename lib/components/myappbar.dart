@@ -10,7 +10,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
@@ -27,8 +27,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: Icon(Icons.settings),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const MySettings()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MySettings()),
+            );
           },
         )
       ],
