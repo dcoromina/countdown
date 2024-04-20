@@ -73,8 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     CountdownTimerScreen(
-      targetDate: DateTime(2024, 12, 31),
-    ), // Replace with your actual widgets
+        targetDate: DateTime(2026, 06, 12)), // Replace with your actual widgets
     const MyStreaks(),
     const MyCounters()
   ];

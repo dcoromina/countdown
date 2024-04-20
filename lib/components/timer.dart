@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -35,18 +37,37 @@ class _CountdownTimerScreenState extends State<CountdownTimerScreen> {
     });
   }
 
-  String _formatTime(Duration duration) {
+  String _formatTimeDays(Duration duration) {
+    var days = duration.inDays.truncate();
+
+    return '$days';
+  }
+
+  String _formatTimeMonths(Duration duration) {
     final months = duration.inDays / 30;
-    final years = months / 12;
+
+    return ' $months';
+  }
+
+  String _formatTimeYears(Duration duration) {
+    final months = duration.inDays / 30;
+    print(duration.inDays / 30);
+    var years = months / 12.truncate();
+    return '$years years';
+  }
+
+  String _formatTimeHours(Duration duration) {
+    final hours = duration.inHours % 24;
+    final seconds = duration.inSeconds % 60;
+
+    return ' $hours hours $seconds seconds';
+  }
+
+/*     final years = months / 12;
     final days = duration.inDays;
     final hours = duration.inHours % 24;
     final minutes = duration.inMinutes % 60;
-    final seconds = duration.inSeconds % 60;
-
-    ;
-
-    return ' $years years, $months months, $days days, $hours hours, $minutes minutes, $seconds seconds';
-  }
+    final seconds = duration.inSeconds % 60; */
 
   @override
   void dispose() {
@@ -57,11 +78,27 @@ class _CountdownTimerScreenState extends State<CountdownTimerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          _formatTime(_remainingTime),
-          style: TextStyle(fontSize: 24),
-        ),
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              _formatTimeYears(_remainingTime),
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Center(
+            child: Text(
+              _formatTimeMonths(_remainingTime),
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Center(
+            child: Text(
+              _formatTimeHours(_remainingTime),
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ],
       ),
     );
   }

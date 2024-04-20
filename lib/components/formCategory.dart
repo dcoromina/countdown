@@ -8,6 +8,7 @@ class MyCategory extends StatefulWidget {
 }
 
 class _MyCategoryState extends State<MyCategory> {
+  bool showTravel = false;
   @override
   Widget build(BuildContext context) {
     return const Column(
@@ -62,17 +63,24 @@ class _MyCategoryState extends State<MyCategory> {
                     ),
                   ),
                   SizedBox(
-                    width: 70,
-                    height: 70,
-                    child: Card(
-                      elevation: 5,
-                      child: Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Center(
-                            child: Icon(
-                          Icons.flight_takeoff_outlined,
+                    width: 65,
+                    height: 65,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          shape: MaterialStatePropertyAll(
+                              RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15)))),
+                          alignment: Alignment.center,
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.white),
+                          elevation: MaterialStatePropertyAll(5)),
+                      onPressed: null,
+                      child: Center(
+                        child: Icon(
+                          Icons.flight,
                           size: 40,
-                        )),
+                        ),
                       ),
                     ),
                   ),
