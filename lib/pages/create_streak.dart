@@ -5,16 +5,16 @@ import 'package:countdown/components/formCategory.dart';
 import 'package:countdown/styles.dart';
 import 'package:flutter/material.dart';
 
-class CreateCountdown extends StatefulWidget {
-  const CreateCountdown({super.key});
+class CreateStreak extends StatefulWidget {
+  const CreateStreak({super.key});
 
   @override
-  State<CreateCountdown> createState() => _CreateCountdownState();
+  State<CreateStreak> createState() => _CreateCountdownState();
 }
 
 final _formKey = GlobalKey<FormState>();
 
-class _CreateCountdownState extends State<CreateCountdown> {
+class _CreateCountdownState extends State<CreateStreak> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -36,7 +36,7 @@ class _CreateCountdownState extends State<CreateCountdown> {
                       children: const [
                         BackButton(),
                         Text(
-                          "Create a countdown",
+                          "Create a streak",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w500),
                         ),

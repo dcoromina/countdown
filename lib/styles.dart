@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 /// Convenience class to access application colors.
 abstract class AppColors {

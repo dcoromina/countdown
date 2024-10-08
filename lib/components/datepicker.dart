@@ -31,7 +31,7 @@ class _MyDatePickerState extends State<MyDatePicker> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Event's date"),
+            const Text("Event's date"),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -55,7 +55,7 @@ class _MyDatePickerState extends State<MyDatePicker> {
                 ),
                 ElevatedButton(
                   onLongPress: () => _selectDate(context),
-                  style: ButtonStyle(),
+                  style: const ButtonStyle(),
                   onPressed: () => _selectDate(context),
                   child: const Icon(Icons.calendar_month_outlined, size: 30),
                 ),
@@ -65,6 +65,5 @@ class _MyDatePickerState extends State<MyDatePicker> {
         )
       ],
     );
-    ;
   }
 }

@@ -1,5 +1,3 @@
-import 'package:countdown/main.dart';
-import 'package:countdown/pages/card_detail.dart';
 import 'package:countdown/pages/streak_page.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +22,7 @@ class MyBottomNavBar extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-            child: Text(
+            child: const Text(
               "Streaks",
               style: TextStyle(color: Colors.white),
             ),

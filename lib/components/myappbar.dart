@@ -23,9 +23,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     style: TextStyle(color: Colors.white, fontSize: 17))),
           ],
         ),
-        SizedBox(width: 95),
+        const SizedBox(width: 95),
         IconButton(
-          icon: Icon(Icons.settings),
+          icon: const Icon(Icons.settings),
           onPressed: () {
             Navigator.push(
               context,

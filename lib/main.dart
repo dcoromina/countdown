@@ -1,17 +1,17 @@
 import 'package:countdown/components/myappbar.dart';
-import 'package:countdown/components/mybottomnavbar.dart';
-import 'package:countdown/components/test_card.dart';
 import 'package:countdown/components/timer.dart';
-import 'package:countdown/pages/card_detail.dart';
-import 'package:countdown/pages/countdown_page.dart';
 import 'package:countdown/pages/counter_page.dart';
-import 'package:countdown/pages/create_countdown.dart';
 import 'package:countdown/pages/streak_page.dart';
 import 'package:countdown/styles.dart';
+import 'package:countdown/theme/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeProvider(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -27,11 +27,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Countdown',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Center(child: const MyHomePage()),
+      theme: Provider.of<ThemeProvider>(context).themeData,
+      home: const MyHomePage(),
     );
   }
 }
@@ -40,16 +37,6 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({
     super.key,
   });
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -57,20 +44,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
-    CountdownTimerScreen(
-        targetDate: DateTime(2026, 06, 12)), // Replace with your actual widgets
+    CountdownTimerScreen(targetDate: DateTime(2026, 06, 12)),
     const MyStreaks(),
     const MyCounters()
   ];
   List<int> cardList = List<int>.generate(20, (int index) => index);
 
+  @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: const MyAppBar(),
@@ -82,26 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          /*  Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CardDetail())); */
-          showDialog(
-            context: context,
-            builder: (context) {
-              return Dialog(
-                shape: RoundedRectangleBorder(
-                    side: const BorderSide(width: 1, color: Colors.white38),
-                    borderRadius: BorderRadius.circular(15)),
-                elevation: 16,
-                child: const CreateCountdown(),
-              );
-            },
-          );
-        },
-        tooltip: 'Create countdown',
-        child: const Icon(Icons.add),
-      ),
+
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,
         selectedItemColor: Colors.white,

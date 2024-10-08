@@ -1,7 +1,7 @@
 import 'package:countdown/styles.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:countdown/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class MySettings extends StatefulWidget {
   const MySettings({super.key});
@@ -11,7 +11,7 @@ class MySettings extends StatefulWidget {
 }
 
 class _MySettingsState extends State<MySettings> {
-  var _switchValue = false;
+  final _switchValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -140,18 +140,22 @@ class _MySettingsState extends State<MySettings> {
                         ],
                       ),
                       Switch(
-                        // thumb color (round icon)
-                        activeColor: Colors.amber,
-                        activeTrackColor: Colors.cyan,
-                        inactiveThumbColor: Colors.blueGrey,
-                        inactiveTrackColor: Colors.grey,
-                        splashRadius: 50.0,
-                        // boolean variable value
-                        value: _switchValue,
-                        // changes the state of the switch
-                        onChanged: (bool value) =>
-                            setState(() => _switchValue = value),
-                      ),
+                          // thumb color (round icon)
+                          activeColor: Colors.amber,
+                          activeTrackColor: Colors.cyan,
+                          inactiveThumbColor: Colors.blueGrey,
+                          inactiveTrackColor: Colors.grey,
+                          splashRadius: 50.0,
+                          // boolean variable value
+                          value:
+                              Provider.of<ThemeProvider>(context).switchValue,
+                          // changes the state of the switch
+                          onChanged: (bool value) {
+                            Provider.of<ThemeProvider>(context, listen: false)
+                                .updateSwitchValue(value);
+                            Provider.of<ThemeProvider>(context, listen: false)
+                                .toggleTheme(); /* setState(() => _switchValue = value), */
+                          }),
                     ],
                   ),
                 ),

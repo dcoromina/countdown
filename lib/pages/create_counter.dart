@@ -1,20 +1,21 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:countdown/components/datepicker.dart';
-import 'package:countdown/components/formCategory.dart';
+import 'package:countdown/components/color_picker.dart';
 import 'package:countdown/styles.dart';
 import 'package:flutter/material.dart';
 
-class CreateCountdown extends StatefulWidget {
-  const CreateCountdown({super.key});
+class CreateCounter extends StatefulWidget {
+  const CreateCounter({super.key});
 
   @override
-  State<CreateCountdown> createState() => _CreateCountdownState();
+  State<CreateCounter> createState() => _CreateCounterState();
 }
+
+bool _checkvalue = false;
 
 final _formKey = GlobalKey<FormState>();
 
-class _CreateCountdownState extends State<CreateCountdown> {
+class _CreateCounterState extends State<CreateCounter> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -36,7 +37,7 @@ class _CreateCountdownState extends State<CreateCountdown> {
                       children: const [
                         BackButton(),
                         Text(
-                          "Create a countdown",
+                          "Create a counter",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w500),
                         ),
@@ -71,8 +72,25 @@ class _CreateCountdownState extends State<CreateCountdown> {
                             return null;
                           },
                         ),
-                        MyDatePicker(),
-                        MyCategory(),
+                        Padding(
+                            padding: const EdgeInsets.only(top: 16.0),
+                            child: ColorPicker()),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: Column(
+                            children: [
+                              Text("Allow negative"),
+                              Checkbox(
+                                value: _checkvalue,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    _checkvalue = value ?? false;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           child: Center(

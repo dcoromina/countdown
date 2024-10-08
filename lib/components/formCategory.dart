@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyCategory extends StatefulWidget {
   const MyCategory({super.key});
@@ -62,14 +60,12 @@ class _MyCategoryState extends State<MyCategory> {
                     height: 65,
                     child: ElevatedButton(
                       style: const ButtonStyle(
-                          shape: MaterialStatePropertyAll(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)))),
+                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)))),
                           alignment: Alignment.center,
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.white),
-                          elevation: MaterialStatePropertyAll(5)),
+                          backgroundColor: WidgetStatePropertyAll(Colors.white),
+                          elevation: WidgetStatePropertyAll(5)),
                       onPressed: () => {
                         showDialog(
                           context: context,
@@ -89,30 +85,36 @@ class _MyCategoryState extends State<MyCategory> {
                                       children: [
                                         ElevatedButton(
                                             onPressed: ButtonTest,
-                                            child:
-                                                Icon(Icons.sports_basketball)),
+                                            child: const Icon(
+                                                Icons.sports_basketball)),
                                         ElevatedButton(
                                             onPressed: ButtonTest,
-                                            child: Icon(Icons.sports_soccer)),
-                                        ElevatedButton(
-                                            onPressed: ButtonTest,
-                                            child: Icon(Icons.sports_golf)),
-                                        ElevatedButton(
-                                            onPressed: ButtonTest,
-                                            child: Icon(Icons.sports_baseball)),
-                                        ElevatedButton(
-                                            onPressed: ButtonTest,
-                                            child: Icon(Icons.sports_cricket)),
-                                        ElevatedButton(
-                                            onPressed: ButtonTest,
-                                            child: Icon(Icons.sports_football)),
-                                        ElevatedButton(
-                                            onPressed: ButtonTest,
-                                            child: Icon(Icons.sports_hockey)),
+                                            child: const Icon(
+                                                Icons.sports_soccer)),
                                         ElevatedButton(
                                             onPressed: ButtonTest,
                                             child:
-                                                Icon(Icons.sports_volleyball)),
+                                                const Icon(Icons.sports_golf)),
+                                        ElevatedButton(
+                                            onPressed: ButtonTest,
+                                            child: const Icon(
+                                                Icons.sports_baseball)),
+                                        ElevatedButton(
+                                            onPressed: ButtonTest,
+                                            child: const Icon(
+                                                Icons.sports_cricket)),
+                                        ElevatedButton(
+                                            onPressed: ButtonTest,
+                                            child: const Icon(
+                                                Icons.sports_football)),
+                                        ElevatedButton(
+                                            onPressed: ButtonTest,
+                                            child: const Icon(
+                                                Icons.sports_hockey)),
+                                        ElevatedButton(
+                                            onPressed: ButtonTest,
+                                            child: const Icon(
+                                                Icons.sports_volleyball)),
                                       ],
                                     ),
                                   ),
@@ -150,14 +152,12 @@ class _MyCategoryState extends State<MyCategory> {
                     height: 65,
                     child: ElevatedButton(
                       style: const ButtonStyle(
-                          shape: MaterialStatePropertyAll(
-                              RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15)))),
+                          shape: WidgetStatePropertyAll(RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15)))),
                           alignment: Alignment.center,
-                          backgroundColor:
-                              MaterialStatePropertyAll(Colors.white),
-                          elevation: MaterialStatePropertyAll(5)),
+                          backgroundColor: WidgetStatePropertyAll(Colors.white),
+                          elevation: WidgetStatePropertyAll(5)),
                       onPressed: () => {ShowTravelSearch()},
                       child: const Center(
                         child: Icon(
@@ -236,24 +236,28 @@ class _MyCategoryState extends State<MyCategory> {
                 children: [
                   ElevatedButton(
                       onPressed: ButtonTest,
-                      child: Icon(Icons.sports_basketball)),
-                  ElevatedButton(
-                      onPressed: ButtonTest, child: Icon(Icons.sports_soccer)),
-                  ElevatedButton(
-                      onPressed: ButtonTest, child: Icon(Icons.sports_golf)),
+                      child: const Icon(Icons.sports_basketball)),
                   ElevatedButton(
                       onPressed: ButtonTest,
-                      child: Icon(Icons.sports_baseball)),
-                  ElevatedButton(
-                      onPressed: ButtonTest, child: Icon(Icons.sports_cricket)),
+                      child: const Icon(Icons.sports_soccer)),
                   ElevatedButton(
                       onPressed: ButtonTest,
-                      child: Icon(Icons.sports_football)),
-                  ElevatedButton(
-                      onPressed: ButtonTest, child: Icon(Icons.sports_hockey)),
+                      child: const Icon(Icons.sports_golf)),
                   ElevatedButton(
                       onPressed: ButtonTest,
-                      child: Icon(Icons.sports_volleyball)),
+                      child: const Icon(Icons.sports_baseball)),
+                  ElevatedButton(
+                      onPressed: ButtonTest,
+                      child: const Icon(Icons.sports_cricket)),
+                  ElevatedButton(
+                      onPressed: ButtonTest,
+                      child: const Icon(Icons.sports_football)),
+                  ElevatedButton(
+                      onPressed: ButtonTest,
+                      child: const Icon(Icons.sports_hockey)),
+                  ElevatedButton(
+                      onPressed: ButtonTest,
+                      child: const Icon(Icons.sports_volleyball)),
                 ],
               ),
             ),

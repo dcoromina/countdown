@@ -11,6 +11,6 @@ class MyCounters extends StatefulWidget {
 class _MyCountersState extends State<MyCounters> {
   @override
   Widget build(BuildContext context) {
-    return CounterCard();
+    return const CounterCard();
   }
 }

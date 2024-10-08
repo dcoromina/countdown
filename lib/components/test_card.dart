@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CountdownCard extends StatelessWidget {
   final String potato; // Specify your target date here
 
-  CountdownCard({super.key, required this.potato});
+  const CountdownCard({super.key, required this.potato});
 
   @override
   Widget build(BuildContext context) {
